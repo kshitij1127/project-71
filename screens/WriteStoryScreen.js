@@ -1,10 +1,11 @@
 import React from "react";
-import { StyleSheet, View, TextInput } from "react-native";
+import { StyleSheet, View, TextInput, TouchableOpacity } from "react-native";
 import firebase from "firebase";
 import db from "../config";
 
 export default class Write extends React.Component {
   constructor() {
+    super()
     this.state = {
       author: "",
       storyName: "",
@@ -74,7 +75,7 @@ export default class Write extends React.Component {
           }
           placeholder="story"
           multiline={10}
-          value={this.state.author}
+          value={this.state.story}
           onChangeText={(text) => {
             this.setState({
               story: text,
@@ -110,4 +111,16 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     outline: "none",
   },
+
+  button: {
+    borderWidth: 3,
+    textAlign: 'center',
+    padding: 10,
+    borderRadius: 15,
+    backgroundColor: 'lightgreen',
+    justifyContent: 'center',
+    marginTop: 10,
+    fontSize: 24,
+    fontFamily: "Fira Sans",
+  }
 });
