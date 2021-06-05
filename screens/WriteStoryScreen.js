@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, TextInput, TouchableOpacity } from "react-native";
+import { StyleSheet, View, TextInput, TouchableOpacity, KeyboardAvoidingView, ToastAndroid } from "react-native";
 import firebase from "firebase";
 import db from "../config";
 
@@ -24,7 +24,7 @@ export default class Write extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior="padding" enabled>
         <TextInput
           style={
             (styles.displaytext,
@@ -87,11 +87,12 @@ export default class Write extends React.Component {
           style={styles.button}
           onPress={async () => {
             this.submitStory();
+            ToastAndroid.show("your story has been submitted!", ToastAndroid.SHORT)
           }}
         >
           submit
         </TouchableOpacity>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
